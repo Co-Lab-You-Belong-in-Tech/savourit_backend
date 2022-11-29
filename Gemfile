@@ -55,9 +55,10 @@ group :development, :test do
 end
 
 group :development do
+  gem 'rubocop-rails', '~> 2.17', '>= 2.17.3'
+
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
-  gem 'rubocop-rails', '~> 2.17', '>= 2.17.3'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
