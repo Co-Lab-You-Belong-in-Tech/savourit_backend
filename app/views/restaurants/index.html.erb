@@ -1,14 +1,20 @@
 <p style="color: green"><%= notice %></p>
-
 <h1>Restaurants</h1>
-
 <div id="restaurants">
-  <% @restaurants.each do |restaurant| %>
-    <%= render restaurant %>
-    <p>
-      <%= link_to "Show this restaurant", restaurant %>
-    </p>
-  <% end %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Show</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @restaurants.each do |restaurant| %>
+        <%= render partial: 'restaurant_tab', locals: {restaurant: restaurant} %>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-
 <%= link_to "New restaurant", new_restaurant_path %>
