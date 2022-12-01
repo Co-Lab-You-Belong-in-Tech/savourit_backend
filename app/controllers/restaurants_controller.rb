@@ -27,6 +27,9 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       if @restaurant.save
+
+        create_meal(@restaurant)
+
         format.html { redirect_to restaurant_url(@restaurant), notice: t(:restaurant_created) }
         format.json { render :show, status: :created, location: @restaurant }
       else
@@ -69,28 +72,33 @@ class RestaurantsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def restaurant_params
     url = params[:restaurant][:url]
-    # url = 'https://www.ubereats.com/fr-en/store/sultan-kebab/YNTeyyRSSJqf902xebiPwA?diningMode=DELIVERY'
     uri = URI.parse(url)
-
     response = Net::HTTP.get_response(uri)
     html = response.body
-
-    doc = Nokogiri::HTML(html)
-    nom = doc.xpath('/html/body/div[1]/div[1]/div/main/div[3]/div/div[1]/h1').text
-    # description = doc.xpath('/html/body/div[1]/div[1]/div/main/div[3]/div/div[1]/div[2]/div/div[1]/a[1]/div')
-    payment = doc.xpath('/html/body/div[1]/div[1]/div/main/div[3]/div/div[1]/div[2]/div/a/span/span').text
-    location = doc.xpath('/html/body/div[1]/div[1]/div/main/div[3]/div/div[1]/div[2]/div/div[3]/span').text
-    # user_ratings_total
-    # opening_hours
-    # rating
-    # itinerary
-    image = doc.xpath('/html/body/div[1]/div[1]/div/main/div[2]/div/figure/div[1]/img').attribute('src')
+    @doc = Nokogiri::HTML(html)
+    nom = @doc.xpath('/html/body/div[1]/div[1]/div/main/div[3]/div/div[1]/h1').text
+    payment = @doc.xpath('/html/body/div[1]/div[1]/div/main/div[3]/div/div[1]/div[2]/div/a/span/span').text
+    opening_hours = @doc.xpath('/html/body/div[1]/div[1]/div/main/div[3]/div/div[1]/div[2]/div/div[3]/span').text
+    image = @doc.xpath('/html/body/div[1]/div[1]/div/main/div[2]/div/figure/div[1]/img').attribute('src')
 
     p = params.require(:restaurant).permit
     p[:name] = nom
     p[:payment] = payment
-    p[:location] = location
+    p[:opening_hours] = opening_hours
     p[:image] = image
     p
+  end
+
+  def create_meal(restaurant)
+    t = @doc.xpath('/html/body/div[1]/div[1]/div/main/div[4]/div[1]/div[4]/ul/li/ul/li')
+    t.each do |f|
+      a = f.css('span')
+      t1 = a.children[0].text unless a.children[0].nil?
+      t2 = a.children[1].text unless a.children[1].nil?
+      t3 = a.children[2].text unless a.children[2].nil?
+
+      meal = Meal.new(name: t1, price: t2, description: t3, restaurant:)
+      meal.save
+    end
   end
 end
