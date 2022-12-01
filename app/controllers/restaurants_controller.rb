@@ -1,3 +1,7 @@
+require 'open-uri'
+require 'net/http'
+require 'nokogiri'
+
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: %i[show edit update destroy]
 
@@ -64,7 +68,29 @@ class RestaurantsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def restaurant_params
-    params.require(:restaurant).permit(:name, :description, :location, :location_lat, :location_lng,
-                                       :user_ratings_total, :opening_hours, :rating, :payment, :itinerary, :image)
+    url = params[:restaurant][:url]
+    # url = 'https://www.ubereats.com/fr-en/store/sultan-kebab/YNTeyyRSSJqf902xebiPwA?diningMode=DELIVERY'
+    uri = URI.parse(url)
+
+    response = Net::HTTP.get_response(uri)
+    html = response.body
+
+    doc = Nokogiri::HTML(html)
+    nom = doc.xpath('/html/body/div[1]/div[1]/div/main/div[3]/div/div[1]/h1').text
+    # description = doc.xpath('/html/body/div[1]/div[1]/div/main/div[3]/div/div[1]/div[2]/div/div[1]/a[1]/div')
+    payment = doc.xpath('/html/body/div[1]/div[1]/div/main/div[3]/div/div[1]/div[2]/div/a/span/span').text
+    location = doc.xpath('/html/body/div[1]/div[1]/div/main/div[3]/div/div[1]/div[2]/div/div[3]/span').text
+    # user_ratings_total
+    # opening_hours
+    # rating
+    # itinerary
+    image = doc.xpath('/html/body/div[1]/div[1]/div/main/div[2]/div/figure/div[1]/img').attribute('src')
+
+    p = params.require(:restaurant).permit
+    p[:name] = nom
+    p[:payment] = payment
+    p[:location] = location
+    p[:image] = image
+    p
   end
 end

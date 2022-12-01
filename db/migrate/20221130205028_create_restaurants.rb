@@ -1,17 +1,17 @@
 class CreateRestaurants < ActiveRecord::Migration[7.0]
   def change
     create_table :restaurants do |t|
-      t.string :name
-      t.string :description
-      t.string :location
-      t.float :location_lat
-      t.float :location_lng
-      t.float :user_ratings_total
-      t.string :opening_hours
-      t.integer :rating
-      t.string :payment
-      t.text :itinerary
-      t.text :image
+      t.string :name, default: ''
+      t.string :description, default: ''
+      t.string :location, default: ''
+      t.float :location_lat, default: 0
+      t.float :location_lng, default: 0
+      t.float :user_ratings_total, default: 0
+      t.string :opening_hours, default: ''
+      t.integer :rating, default: 0
+      t.string :payment, default: ''
+      t.text :itinerary, default: ''
+      t.text :image, default: ''
 
       t.timestamps
     end
