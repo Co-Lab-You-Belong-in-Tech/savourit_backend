@@ -34,3 +34,6 @@ en:
   restaurant_created: 'Restaurant was successfully created.'
   restaurant_updated: 'Restaurant was successfully updated.'
   restaurant_destroyed: 'Restaurant was successfully destroyed.'
+  meal_created: 'Meal was successfully created.'
+  meal_updated: 'Meal was successfully updated.'
+  meal_destroyed: 'Meal was successfully destroyed.'

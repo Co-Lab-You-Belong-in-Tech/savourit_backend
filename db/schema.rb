@@ -10,24 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_30_205028) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_01_043605) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "restaurants", force: :cascade do |t|
+  create_table "meals", force: :cascade do |t|
     t.string "name"
-    t.string "description"
-    t.string "location"
-    t.float "location_lat"
-    t.float "location_lng"
-    t.float "user_ratings_total"
-    t.string "opening_hours"
+    t.float "price"
+    t.text "description"
+    t.text "photo"
     t.integer "rating"
-    t.string "payment"
-    t.text "itinerary"
-    t.text "image"
+    t.float "user_ratings_total"
+    t.bigint "restaurant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_meals_on_restaurant_id"
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name", default: ""
+    t.string "description", default: ""
+    t.string "location", default: ""
+    t.float "location_lat", default: 0.0
+    t.float "location_lng", default: 0.0
+    t.float "user_ratings_total", default: 0.0
+    t.string "opening_hours", default: ""
+    t.integer "rating", default: 0
+    t.string "payment", default: ""
+    t.text "itinerary", default: ""
+    t.text "image", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "meals", "restaurants"
 end
