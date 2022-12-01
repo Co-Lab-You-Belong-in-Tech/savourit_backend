@@ -4,11 +4,11 @@ class CreateRestaurants < ActiveRecord::Migration[7.0]
       t.string :name, default: ''
       t.string :description, default: ''
       t.string :location, default: ''
-      t.float :location_lat, default: 0
-      t.float :location_lng, default: 0
-      t.float :user_ratings_total, default: 0
+      t.string :location_lat, default: ''
+      t.string :location_lng, default: ''
+      t.string :user_ratings_total, default: ''
       t.string :opening_hours, default: ''
-      t.integer :rating, default: 0
+      t.string :rating, default: ''
       t.string :payment, default: ''
       t.text :itinerary, default: ''
       t.text :image, default: ''

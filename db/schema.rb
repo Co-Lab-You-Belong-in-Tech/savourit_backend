@@ -15,12 +15,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_043605) do
   enable_extension "plpgsql"
 
   create_table "meals", force: :cascade do |t|
-    t.string "name"
-    t.float "price"
-    t.text "description"
-    t.text "photo"
-    t.integer "rating"
-    t.float "user_ratings_total"
+    t.string "name", default: ""
+    t.string "price", default: ""
+    t.text "description", default: ""
+    t.text "photo", default: ""
+    t.string "rating", default: ""
+    t.string "user_ratings_total", default: ""
     t.bigint "restaurant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -31,11 +31,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_043605) do
     t.string "name", default: ""
     t.string "description", default: ""
     t.string "location", default: ""
-    t.float "location_lat", default: 0.0
-    t.float "location_lng", default: 0.0
-    t.float "user_ratings_total", default: 0.0
+    t.string "location_lat", default: ""
+    t.string "location_lng", default: ""
+    t.string "user_ratings_total", default: ""
     t.string "opening_hours", default: ""
-    t.integer "rating", default: 0
+    t.string "rating", default: ""
     t.string "payment", default: ""
     t.text "itinerary", default: ""
     t.text "image", default: ""
