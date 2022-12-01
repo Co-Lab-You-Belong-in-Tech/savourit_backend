@@ -9,6 +9,7 @@
     <%= link_to "Back to restaurants", restaurants_path, class: "btn btn-outline-dark" %>
   </div>
   <div class="col-6 inline-form">
+    <%= link_to "Show meals", restaurant_meals_path(@restaurant), class: "btn btn-outline-info" %>
     <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant), class: "btn btn-outline-primary" %>
     <%= button_to "Destroy this restaurant", @restaurant, method: :delete, class: "btn btn-outline-danger" %>
   </div>

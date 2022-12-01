@@ -3,5 +3,6 @@
   <td class="td-image"> <img src="<%= restaurant.image %>"/></td>
   <td> <%= restaurant.name %></td>
   <td><%= link_to "Show this restaurant", restaurant, class: "btn btn-warning" %></td>
+  <td><%= link_to "Show meals", restaurant_meals_path(restaurant), class: "btn btn-outline-info" %></td>
   <td> <%= button_to "Destroy this restaurant", restaurant, method: :delete, class: "btn btn-outline-danger" %></td>
 </tr>
