@@ -1,11 +1,28 @@
 <p style="color: green"><%= notice %></p>
-<h1>Meals</h1>
 <div id="meals">
-  <% @meals.each do |meal| %>
-    <%= render meal %>
-    <p>
-      <%= link_to "Show this meal", restaurant_meal_path(@restaurant,meal) %>
-    </p>
-  <% end %>
+  <h1 class="mb-3">Meals</h1>
+  <div class="row">
+    <div class="col-6 inline-form">
+      <%= link_to "Back to restaurant", restaurant_path(@restaurant), class: "btn btn-outline-dark" %>
+    </div>
+    <div class="col-6 inline-form">
+      <%= link_to "New meal", new_restaurant_meal_path, class: 'btn btn-outline-success mb-4' %>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Picture</th>
+        <th scope="col">Name</th>
+        <th scope="col">Show Meals</th>
+        <th scope="col">Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @meals.each do |meal| %>
+        <%= render partial: 'meal_tab', locals: {restaurant: @restaurant, meal: } %>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-<%= link_to "New meal", new_restaurant_meal_path %>
