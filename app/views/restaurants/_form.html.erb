@@ -2,7 +2,6 @@
   <% if restaurant.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
-
       <ul>
         <% restaurant.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,62 +9,50 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="my-2">
+    <%= form.label :name, style: "display: block", class: 'form-label' %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
-
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+    <%= form.label :description, style: "display: block", class: 'form-label' %>
+    <%= form.text_field :description, class: "form-control" %>
   </div>
-
   <div>
-    <%= form.label :location, style: "display: block" %>
-    <%= form.text_field :location %>
+    <%= form.label :location, style: "display: block", class: 'form-label' %>
+    <%= form.text_field :location, class: "form-control" %>
   </div>
-
   <div>
-    <%= form.label :location_lat, style: "display: block" %>
-    <%= form.text_field :location_lat %>
+    <%= form.label :location_lat, style: "display: block", class: 'form-label' %>
+    <%= form.text_field :location_lat, class: "form-control" %>
   </div>
-
   <div>
-    <%= form.label :location_lng, style: "display: block" %>
-    <%= form.text_field :location_lng %>
+    <%= form.label :location_lng, style: "display: block", class: 'form-label' %>
+    <%= form.text_field :location_lng, class: "form-control" %>
   </div>
-
   <div>
-    <%= form.label :user_ratings_total, style: "display: block" %>
-    <%= form.text_field :user_ratings_total %>
+    <%= form.label :user_ratings_total, style: "display: block", class: 'form-label' %>
+    <%= form.text_field :user_ratings_total, class: "form-control" %>
   </div>
-
   <div>
-    <%= form.label :opening_hours, style: "display: block" %>
-    <%= form.text_field :opening_hours %>
+    <%= form.label :opening_hours, style: "display: block", class: 'form-label' %>
+    <%= form.text_field :opening_hours, class: "form-control" %>
   </div>
-
   <div>
-    <%= form.label :rating, style: "display: block" %>
-    <%= form.number_field :rating %>
+    <%= form.label :rating, style: "display: block", class: 'form-label' %>
+    <%= form.number_field :rating, class: "form-control" %>
   </div>
-
   <div>
-    <%= form.label :payment, style: "display: block" %>
-    <%= form.text_field :payment %>
+    <%= form.label :payment, style: "display: block", class: 'form-label' %>
+    <%= form.text_field :payment, class: "form-control" %>
   </div>
-
   <div>
-    <%= form.label :itinerary, style: "display: block" %>
-    <%= form.text_area :itinerary %>
+    <%= form.label :itinerary, style: "display: block", class: 'form-label' %>
+    <%= form.text_area :itinerary, class: "form-control" %>
   </div>
-
   <div>
-    <%= form.label :image, style: "display: block" %>
-    <%= form.text_area :image %>
+    <%= form.label :image, style: "display: block", class: 'form-label' %>
+    <%= form.text_area :image, class: "form-control" %>
   </div>
-
   <div>
     <%= form.submit %>
   </div>
