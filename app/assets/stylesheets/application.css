@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+.inline-form form {
+  display: inline;
+}
+
+.td-image img {
+  width: 100px;
+}

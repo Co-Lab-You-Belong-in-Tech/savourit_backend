@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+<div id="restaurants">
+  <h1 class="mb-3">Restaurants</h1>
+  <%= link_to "New restaurant", new_restaurant_path, class: 'btn btn-outline-success mb-4' %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Picture</th>
+        <th scope="col">Name</th>
+        <th scope="col">Show</th>
+        <th scope="col">Show Meals</th>
+        <th scope="col">Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @restaurants.each do |restaurant| %>
+        <%= render partial: 'restaurant_tab', locals: {restaurant: restaurant} %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

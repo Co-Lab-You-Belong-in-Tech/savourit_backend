@@ -1,0 +1,66 @@
+<p style="color: green"><%= notice %></p>
+<div class="row mt-5 mb-5">
+  <div class="col-12">
+    <h1><%= @restaurant.name %> </h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-6 inline-form">
+    <%= link_to "Back to restaurants", restaurants_path, class: "btn btn-outline-dark" %>
+  </div>
+  <div class="col-6 inline-form">
+    <%= link_to "Show meals", restaurant_meals_path(@restaurant), class: "btn btn-outline-info" %>
+    <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant), class: "btn btn-outline-primary" %>
+    <%= button_to "Destroy this restaurant", @restaurant, method: :delete, class: "btn btn-outline-danger" %>
+  </div>
+</div>
+<div id="restaurants" class="row mt-5">
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <td> <%= @restaurant.name %></td>
+      </tr>
+      <tr>
+        <th>Payment:</th>
+        <td> <%= @restaurant.payment %></td>
+      </tr>
+      <tr>
+        <th>Opening hours:</th>
+        <td> <%= @restaurant.opening_hours %></td>
+      </tr>
+      <tr>
+        <th>Image:</th>
+        <td> <img src="<%= @restaurant.image %>"/></td>
+      </tr>
+      <tr class="table-secondary">
+        <th>Description</th>
+        <td> <%= @restaurant.description %></td>
+      </tr>
+      <tr class="table-secondary">
+        <th>Location</th>
+        <td> <%= @restaurant.location %></td>
+      </tr>
+      <tr class="table-secondary">
+        <th>Latitude</th>
+        <td> <%= @restaurant.location_lat %></td>
+      </tr>
+      <tr class="table-secondary">
+        <th>Longitude</th>
+        <td> <%= @restaurant.location_lng %></td>
+      </tr>
+      <tr class="table-secondary">
+        <th>User ratings total:</th>
+        <td> <%= @restaurant.user_ratings_total %></td>
+      </tr>
+      <tr class="table-secondary">
+        <th>Rating:</th>
+        <td> <%= @restaurant.rating %></td>
+      </tr>
+      <tr class="table-secondary">
+        <th>Itinerary:</th>
+        <td> <%= @restaurant.itinerary %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
