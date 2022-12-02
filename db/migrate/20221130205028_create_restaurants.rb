@@ -3,7 +3,7 @@ class CreateRestaurants < ActiveRecord::Migration[7.0]
     create_table :restaurants do |t|
       t.string :name, null: false
       t.string :adress, null: false
-      t.string :stree_adress, null: false
+      t.string :street_adress, null: false
       t.string :city, null: false
       t.string :country, null: false
       t.string :postal_code,default: ''
