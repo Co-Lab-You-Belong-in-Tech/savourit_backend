@@ -1,7 +1,7 @@
 <tr id="<%= dom_id meal %>">
   <th scope="row"><%= meal.id %></th>
-  <td class="td-image"> <img src="<%= meal.photo %>"/></td>
-  <td> <%= meal.name %></td>
+  <td class="td-image"> <img src="<%= meal.image_url %>"/></td>
+  <td> <%= meal.title %></td>
   <td><%= link_to "Show this meal", restaurant_meal_path(@restaurant,meal) , class: "btn btn-warning"%></td>
   <td> <%= button_to "Destroy this meal", restaurant_meal_path(@restaurant,meal), method: :delete, class: "btn btn-outline-danger" %></td>
 </tr>
