@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uuid: MyString
+  slug: MyString
+  city_slug: MyString
+  city_id: 1
+  delivery: false
+  pickup: false
+  rating_value: 1.5
+  rating_count: 1
+  time_delivery: MyString
+
+two:
+  uuid: MyString
+  slug: MyString
+  city_slug: MyString
+  city_id: 1
+  delivery: false
+  pickup: false
+  rating_value: 1.5
+  rating_count: 1
+  time_delivery: MyString
