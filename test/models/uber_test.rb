@@ -1,4 +1,4 @@
-require "test_helper"
+require 'test_helper'
 
 class UberTest < ActiveSupport::TestCase
   # test "the truth" do

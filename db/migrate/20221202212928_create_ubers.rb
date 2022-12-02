@@ -10,6 +10,7 @@ class CreateUbers < ActiveRecord::Migration[7.0]
       t.float :rating_value
       t.integer :rating_count
       t.string :time_delivery
+      t.belongs_to :restaurant, null: false, foreign_key: true
 
       t.timestamps
     end
