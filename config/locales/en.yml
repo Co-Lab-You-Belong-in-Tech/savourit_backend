@@ -37,3 +37,6 @@ en:
   meal_created: 'Meal was successfully created.'
   meal_updated: 'Meal was successfully updated.'
   meal_destroyed: 'Meal was successfully destroyed.'
+  category_created: 'Category was successfully created.'
+  category_updated: 'Category was successfully updated.'
+  category_destroyed: 'Category was successfully destroyed.'
