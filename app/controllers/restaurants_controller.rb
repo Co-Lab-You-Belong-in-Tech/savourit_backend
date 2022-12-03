@@ -1,7 +1,6 @@
 require 'open-uri'
 require 'net/http'
 require 'nokogiri'
-require 'delivery/uber_delivery'
 
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: %i[show edit update destroy]
