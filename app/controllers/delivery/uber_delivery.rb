@@ -17,6 +17,7 @@ class UberDelivery
 
   def self.create_entities(doc)
     r = UberDelivery.create_restaurant(doc)
+    UberDelivery.create_meal(doc, r)
     { code: UberDelivery::SUCCESS, restaurant: r }
   rescue ActiveRecord::StatementInvalid => e
     Rails.logger.debug e
@@ -41,6 +42,19 @@ class UberDelivery
     r = Restaurant.new(restaurant)
     r.save
     r
+  end
+
+  def self.create_meal(doc, restaurant)
+    meals = doc.xpath('/html/body/div[1]/div[1]/div/main/div[4]/div[1]/div[4]/ul/li/ul/li')
+    meals.each do |f|
+      meal = f.css('span')
+      title = meal.children[0].text unless meal.children[0].nil?
+      price = meal.children[1].text unless meal.children[1].nil?
+      description = meal.children[2].text unless meal.children[2].nil?
+
+      meal = Meal.new(title:, price:, description:, restaurant:)
+      meal.save
+    end
   end
 
   def self.get_value(path)
