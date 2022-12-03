@@ -24,7 +24,14 @@ class RestaurantsController < ApplicationController
 
   # POST /restaurants or /restaurants.json
   def create
-    response = UberDelivery.scrap(params[:restaurant][:url])
+    url = params[:restaurant][:url]
+
+    response = if url.match? 'https://www.ubereats.com/'
+                 UberDelivery.scrap(url)
+               else
+                 { code: '-1', errors: 'the url is malformed', restaurant: Restaurant.new }
+               end
+
     @restaurant = response[:restaurant]
     @errors = response[:errors]
 
