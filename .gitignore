@@ -34,5 +34,3 @@ node_modules/
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-
-/app/lib/uber_delivery_j.rb
