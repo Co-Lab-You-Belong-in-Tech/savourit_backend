@@ -1,8 +1,8 @@
 class CreateUbers < ActiveRecord::Migration[7.0]
   def change
     create_table :ubers do |t|
-      t.string :uuid
-      t.string :url
+      t.string :uuid, null: false
+      t.string :url, null: false
       t.string :slug
       t.string :city_slug
       t.integer :city_id

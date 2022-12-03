@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_222353) do
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_222353) do
   end
 
   create_table "imagers", force: :cascade do |t|
-    t.string "link"
+    t.string "link", null: false
     t.bigint "restaurant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -40,9 +40,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_222353) do
   create_table "meals", force: :cascade do |t|
     t.string "title", null: false
     t.float "price", null: false
-    t.text "description", default: ""
-    t.text "image_url", default: ""
-    t.string "uber_url", default: ""
+    t.text "description"
+    t.text "image_url"
+    t.string "uber_url"
     t.boolean "desactivate", default: false
     t.bigint "restaurant_id", null: false
     t.datetime "created_at", null: false
@@ -56,19 +56,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_222353) do
     t.string "street_address", null: false
     t.string "city", null: false
     t.string "country", null: false
-    t.string "postal_code", default: ""
-    t.string "region", default: ""
-    t.string "latitude", default: ""
-    t.string "longitude", default: ""
-    t.string "phone_number", default: ""
-    t.string "currency_code", default: ""
+    t.string "postal_code"
+    t.string "region"
+    t.string "latitude"
+    t.string "longitude"
+    t.string "phone_number"
+    t.string "currency_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "ubers", force: :cascade do |t|
-    t.string "uuid"
-    t.string "url"
+    t.string "uuid", null: false
+    t.string "url", null: false
     t.string "slug"
     t.string "city_slug"
     t.integer "city_id"

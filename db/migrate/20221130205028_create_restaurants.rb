@@ -6,12 +6,12 @@ class CreateRestaurants < ActiveRecord::Migration[7.0]
       t.string :street_address, null: false
       t.string :city, null: false
       t.string :country, null: false
-      t.string :postal_code,default: ''
-      t.string :region, default: ''
-      t.string :latitude, default: ''
-      t.string :longitude, default: ''
-      t.string :phone_number, default: ''
-      t.string :currency_code, default: ''
+      t.string :postal_code
+      t.string :region
+      t.string :latitude
+      t.string :longitude
+      t.string :phone_number
+      t.string :currency_code
     
       t.timestamps
     end
