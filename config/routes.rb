@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :hungers
   #resources :categories
   root "dashboard#index"
   get '/meals', to: 'dashboard#meals'

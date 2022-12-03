@@ -1,0 +1,2 @@
+class Hunger < ApplicationRecord
+end
