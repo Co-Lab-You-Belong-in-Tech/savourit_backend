@@ -10,17 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_01_043605) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_02_222353) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "category_meals", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "meal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_category_meals_on_category_id"
+    t.index ["meal_id"], name: "index_category_meals_on_meal_id"
+  end
+
+  create_table "imagers", force: :cascade do |t|
+    t.string "link", null: false
+    t.bigint "restaurant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_imagers_on_restaurant_id"
+  end
+
   create_table "meals", force: :cascade do |t|
-    t.string "name", default: ""
-    t.string "price", default: ""
-    t.text "description", default: ""
-    t.text "photo", default: ""
-    t.string "rating", default: ""
-    t.string "user_ratings_total", default: ""
+    t.string "title", null: false
+    t.float "price", null: false
+    t.text "description"
+    t.text "image_url"
+    t.string "uber_url"
+    t.boolean "desactivate", default: false
     t.bigint "restaurant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -28,20 +51,39 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_043605) do
   end
 
   create_table "restaurants", force: :cascade do |t|
-    t.string "name", default: ""
-    t.string "description", default: ""
-    t.string "location", default: ""
-    t.string "location_lat", default: ""
-    t.string "location_lng", default: ""
-    t.string "user_ratings_total", default: ""
-    t.string "opening_hours", default: ""
-    t.string "rating", default: ""
-    t.string "payment", default: ""
-    t.text "itinerary", default: ""
-    t.text "image", default: ""
+    t.string "name", null: false
+    t.string "address", null: false
+    t.string "street_address", null: false
+    t.string "city", null: false
+    t.string "country", null: false
+    t.string "postal_code"
+    t.string "region"
+    t.string "latitude"
+    t.string "longitude"
+    t.string "phone_number"
+    t.string "currency_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "ubers", force: :cascade do |t|
+    t.string "uuid", null: false
+    t.string "url", null: false
+    t.string "slug"
+    t.string "city_slug"
+    t.integer "city_id"
+    t.boolean "delivery"
+    t.boolean "pickup"
+    t.float "rating_value"
+    t.integer "rating_count"
+    t.string "time_delivery"
+    t.bigint "restaurant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_ubers_on_restaurant_id"
+  end
+
+  add_foreign_key "imagers", "restaurants"
   add_foreign_key "meals", "restaurants"
+  add_foreign_key "ubers", "restaurants"
 end

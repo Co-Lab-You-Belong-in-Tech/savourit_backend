@@ -1,7 +1,7 @@
 <p style="color: green"><%= notice %></p>
 <div class="row mt-5 mb-5">
   <div class="col-12">
-    <h1> <%= @restaurant.name %>-- <%= @meal.name %></h1>
+    <h1> <%= @restaurant.name %>-- <%= @meal.title %></h1>
   </div>
 </div>
 <div class="row">
@@ -18,7 +18,7 @@
     <tbody>
       <tr>
         <th>Name</th>
-        <td> <%= @meal.name %></td>
+        <td> <%= @meal.title %></td>
       </tr>
       <tr>
         <th>Price:</th>
@@ -30,15 +30,7 @@
       </tr>
       <tr>
         <th>Photo:</th>
-        <td> <img src="<%= @meal.photo %>"/></td>
-      </tr>
-      <tr class="table-secondary">
-        <th>Rating</th>
-        <td> <%= @meal.rating %></td>
-      </tr>
-      <tr class="table-secondary">
-        <th>User ratings total</th>
-        <td> <%= @meal.user_ratings_total %></td>
+        <td> <img src="<%= @meal.image_url %>"/></td>
       </tr>
     </tbody>
   </table>

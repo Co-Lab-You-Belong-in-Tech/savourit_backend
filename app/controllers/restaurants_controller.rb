@@ -77,15 +77,13 @@ class RestaurantsController < ApplicationController
     html = response.body
     @doc = Nokogiri::HTML(html)
     nom = @doc.xpath('/html/body/div[1]/div[1]/div/main/div[3]/div/div[1]/h1').text
-    payment = @doc.xpath('/html/body/div[1]/div[1]/div/main/div[3]/div/div[1]/div[2]/div/a/span/span').text
-    opening_hours = @doc.xpath('/html/body/div[1]/div[1]/div/main/div[3]/div/div[1]/div[2]/div/div[3]/span').text
-    image = @doc.xpath('/html/body/div[1]/div[1]/div/main/div[2]/div/figure/div[1]/img').attribute('src')
 
     p = params.require(:restaurant).permit
     p[:name] = nom
-    p[:payment] = payment
-    p[:opening_hours] = opening_hours
-    p[:image] = image
+    p[:address] = 'tmp'
+    p[:street_address] = 'tmp'
+    p[:city] = 'tmp'
+    p[:country] = 'tmp'
     p
   end
 
@@ -97,7 +95,7 @@ class RestaurantsController < ApplicationController
       t2 = a.children[1].text unless a.children[1].nil?
       t3 = a.children[2].text unless a.children[2].nil?
 
-      meal = Meal.new(name: t1, price: t2, description: t3, restaurant:)
+      meal = Meal.new(title: t1, price: t2, description: t3, restaurant:)
       meal.save
     end
   end

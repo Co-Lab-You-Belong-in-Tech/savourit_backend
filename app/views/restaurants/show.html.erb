@@ -22,44 +22,20 @@
         <td> <%= @restaurant.name %></td>
       </tr>
       <tr>
-        <th>Payment:</th>
-        <td> <%= @restaurant.payment %></td>
+        <th>Address:</th>
+        <td> <%= @restaurant.address %></td>
       </tr>
       <tr>
-        <th>Opening hours:</th>
-        <td> <%= @restaurant.opening_hours %></td>
-      </tr>
-      <tr>
-        <th>Image:</th>
-        <td> <img src="<%= @restaurant.image %>"/></td>
-      </tr>
-      <tr class="table-secondary">
-        <th>Description</th>
-        <td> <%= @restaurant.description %></td>
-      </tr>
-      <tr class="table-secondary">
-        <th>Location</th>
-        <td> <%= @restaurant.location %></td>
-      </tr>
-      <tr class="table-secondary">
         <th>Latitude</th>
-        <td> <%= @restaurant.location_lat %></td>
+        <td> <%= @restaurant.latitude %></td>
       </tr>
-      <tr class="table-secondary">
+      <tr>
         <th>Longitude</th>
-        <td> <%= @restaurant.location_lng %></td>
+        <td> <%= @restaurant.longitude %></td>
       </tr>
-      <tr class="table-secondary">
-        <th>User ratings total:</th>
-        <td> <%= @restaurant.user_ratings_total %></td>
-      </tr>
-      <tr class="table-secondary">
-        <th>Rating:</th>
-        <td> <%= @restaurant.rating %></td>
-      </tr>
-      <tr class="table-secondary">
-        <th>Itinerary:</th>
-        <td> <%= @restaurant.itinerary %></td>
+      <tr>
+        <th>Currency</th>
+        <td> <%= @restaurant.currency_code %></td>
       </tr>
     </tbody>
   </table>
