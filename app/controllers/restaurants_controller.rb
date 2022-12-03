@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'net/http'
 require 'nokogiri'
+require 'delivery/uber_delivery'
 
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: %i[show edit update destroy]
@@ -23,18 +24,17 @@ class RestaurantsController < ApplicationController
 
   # POST /restaurants or /restaurants.json
   def create
-    @restaurant = Restaurant.new(restaurant_params)
+    response = UberDelivery.scrap(params[:restaurant][:url])
+    @restaurant = response[:restaurant]
+    @errors = response[:errors]
 
     respond_to do |format|
-      if @restaurant.save
-
-        create_meal(@restaurant)
-
-        format.html { redirect_to restaurant_url(@restaurant), notice: t(:restaurant_created) }
+      if response[:code] == UberDelivery::SUCCESS
+        format.html { redirect_to restaurant_url(response[:restaurant]), notice: t(:restaurant_created) }
         format.json { render :show, status: :created, location: @restaurant }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @restaurant.errors, status: :unprocessable_entity }
+        format.json { render json: response[:errors], status: :unprocessable_entity }
       end
     end
   end
