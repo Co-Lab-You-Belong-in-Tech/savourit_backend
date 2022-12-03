@@ -51,8 +51,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_222353) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name", null: false
-    t.string "adress", null: false
-    t.string "street_adress", null: false
+    t.string "address", null: false
+    t.string "street_address", null: false
     t.string "city", null: false
     t.string "country", null: false
     t.string "postal_code", default: ""
@@ -67,6 +67,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_222353) do
 
   create_table "ubers", force: :cascade do |t|
     t.string "uuid"
+    t.string "url"
     t.string "slug"
     t.string "city_slug"
     t.integer "city_id"

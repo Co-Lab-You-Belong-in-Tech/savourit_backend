@@ -80,8 +80,8 @@ class RestaurantsController < ApplicationController
 
     p = params.require(:restaurant).permit
     p[:name] = nom
-    p[:adress] = 'tmp'
-    p[:street_adress] = 'tmp'
+    p[:address] = 'tmp'
+    p[:street_address] = 'tmp'
     p[:city] = 'tmp'
     p[:country] = 'tmp'
     p
