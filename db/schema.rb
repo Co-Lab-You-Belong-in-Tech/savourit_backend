@@ -42,6 +42,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_222353) do
     t.float "price", null: false
     t.text "description", default: ""
     t.text "image_url", default: ""
+    t.string "uber_url", default: ""
     t.boolean "desactivate", default: false
     t.bigint "restaurant_id", null: false
     t.datetime "created_at", null: false
