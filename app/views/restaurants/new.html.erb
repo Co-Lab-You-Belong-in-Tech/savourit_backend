@@ -3,14 +3,12 @@
   <div class="row">
     <div class="col-12">
       <%= form_with(model: @restaurant) do |form| %>
-        <% if @restaurant.errors.any? %>
-          <div style="color: red">
-            <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
-            <ul>
-              <% @restaurant.errors.each do |error| %>
-                <li><%= error.full_message %></li>
-              <% end %>
-            </ul>
+        <% if !@errors.nil? %>
+          <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">prohibited this restaurant from being saved:</h4>
+            <p>
+              <%= @errors %>
+            </p>
           </div>
         <% end %>
         <div>

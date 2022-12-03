@@ -23,18 +23,24 @@ class RestaurantsController < ApplicationController
 
   # POST /restaurants or /restaurants.json
   def create
-    @restaurant = Restaurant.new(restaurant_params)
+    url = params[:restaurant][:url]
+
+    response = if url.match? 'https://www.ubereats.com/'
+                 UberDelivery.scrap(url)
+               else
+                 { code: '-1', errors: 'the url is malformed', restaurant: Restaurant.new }
+               end
+
+    @restaurant = response[:restaurant]
+    @errors = response[:errors]
 
     respond_to do |format|
-      if @restaurant.save
-
-        create_meal(@restaurant)
-
-        format.html { redirect_to restaurant_url(@restaurant), notice: t(:restaurant_created) }
+      if response[:code] == UberDelivery::SUCCESS
+        format.html { redirect_to restaurant_url(response[:restaurant]), notice: t(:restaurant_created) }
         format.json { render :show, status: :created, location: @restaurant }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @restaurant.errors, status: :unprocessable_entity }
+        format.json { render json: response[:errors], status: :unprocessable_entity }
       end
     end
   end
@@ -71,32 +77,6 @@ class RestaurantsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def restaurant_params
-    url = params[:restaurant][:url]
-    uri = URI.parse(url)
-    response = Net::HTTP.get_response(uri)
-    html = response.body
-    @doc = Nokogiri::HTML(html)
-    nom = @doc.xpath('/html/body/div[1]/div[1]/div/main/div[3]/div/div[1]/h1').text
-
-    p = params.require(:restaurant).permit
-    p[:name] = nom
-    p[:address] = 'tmp'
-    p[:street_address] = 'tmp'
-    p[:city] = 'tmp'
-    p[:country] = 'tmp'
-    p
-  end
-
-  def create_meal(restaurant)
-    t = @doc.xpath('/html/body/div[1]/div[1]/div/main/div[4]/div[1]/div[4]/ul/li/ul/li')
-    t.each do |f|
-      a = f.css('span')
-      t1 = a.children[0].text unless a.children[0].nil?
-      t2 = a.children[1].text unless a.children[1].nil?
-      t3 = a.children[2].text unless a.children[2].nil?
-
-      meal = Meal.new(title: t1, price: t2, description: t3, restaurant:)
-      meal.save
-    end
+    params.require(:restaurant).permit
   end
 end
