@@ -40,3 +40,6 @@ en:
   category_created: 'Category was successfully created.'
   category_updated: 'Category was successfully updated.'
   category_destroyed: 'Category was successfully destroyed.'
+  hunger_created: 'Hunger was successfully created.'
+  hunger_updated: 'Hunger was successfully updated.'
+  hunger_destroyed: 'Hunger was successfully destroyed.'

@@ -1,6 +1,6 @@
 <tr id="<%= dom_id restaurant %>">
   <th scope="row"><%= restaurant.id %></th>
-  <td class="td-image"> <img src="<%= restaurant.imagers[0].link %>"/></td>
+  <td class="td-image"> <img src="<%= restaurant.imagers[0].link if !restaurant.imagers[0].nil? %>"/></td>
   <td> <%= restaurant.name %></td>
   <td><%= link_to "Show this restaurant", restaurant, class: "btn btn-warning" %></td>
   <td><%= link_to "Show meals", restaurant_meals_path(restaurant), class: "btn btn-outline-info" %></td>

@@ -1,13 +1,29 @@
 <p style="color: green"><%= notice %></p>
 <div id="restaurants">
-  <h1 class="mb-3">Restaurants</h1>
-  <%= link_to "New restaurant", new_restaurant_path, class: 'btn btn-outline-success mb-4' %>
+  <h1 class="mb-3">Meals</h1>
+  <form class="mb-5" action="<%= meals_path %>">
+    <div class="row">
+      <div class="col-2">
+        <select class="form-select" name="budget">
+          <option selected>Budget</option>
+          <option value="1000">10</option>
+          <option value="2000">20</option>
+          <option value="3000">30</option>
+        </select>
+      </div>
+      <div class="col-3">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>
   <table class="table">
     <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">Picture</th>
         <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Categorie</th>
       </tr>
     </thead>
     <tbody>
@@ -16,8 +32,19 @@
           <th scope="row"><%= meal.id %></th>
           <td class="td-image"> <img src="<%= meal.image_url %>"/></td>
           <td> <%= meal.title %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+          <td>
+            <%= meal.price/100  %> <%= meal.restaurant.currency_code %>
+          </td>
+          <td> <% meal.categories.each{|c| %>
+              <% color_tab = ['text-bg-primary','text-bg-secondary','text-bg-success','text-bg-danger','text-bg-warning','text-bg-info','text-bg-dark'] 
+                  index = c.id%8
+                  color = color_tab[index]
+                  %>
+              <span class="badge <%= color %>">
+                <%= c.name  %> </span>
+              <% } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
