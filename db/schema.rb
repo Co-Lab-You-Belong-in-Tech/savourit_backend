@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_02_222353) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_03_202308) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_222353) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "hunger_id"
+    t.index ["hunger_id"], name: "index_categories_on_hunger_id"
   end
 
   create_table "category_meals", force: :cascade do |t|
@@ -27,6 +29,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_222353) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_category_meals_on_category_id"
     t.index ["meal_id"], name: "index_category_meals_on_meal_id"
+  end
+
+  create_table "hungers", force: :cascade do |t|
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "imagers", force: :cascade do |t|
@@ -83,6 +91,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_222353) do
     t.index ["restaurant_id"], name: "index_ubers_on_restaurant_id"
   end
 
+  add_foreign_key "categories", "hungers"
   add_foreign_key "imagers", "restaurants"
   add_foreign_key "meals", "restaurants"
   add_foreign_key "ubers", "restaurants"
