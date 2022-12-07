@@ -33,7 +33,7 @@
           <td class="td-image"> <img src="<%= meal.image_url %>"/></td>
           <td> <%= meal.title %></td>
           <td>
-            <%= meal.price/100  %> <%= meal.restaurant.currency_code %>
+            <%= meal.price  %> <%= meal.restaurant.currency_code %>
           </td>
           <td> <% meal.categories.each{|c| %>
               <% color_tab = ['text-bg-primary','text-bg-secondary','text-bg-success','text-bg-danger','text-bg-warning','text-bg-info','text-bg-dark'] 

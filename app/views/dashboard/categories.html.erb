@@ -6,6 +6,7 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
+        <th scope="col">Hunger</th>
       </tr>
     </thead>
     <tbody>
@@ -13,6 +14,7 @@
         <tr id="<%= dom_id c %>">
           <th scope="row"><%= c.id %></th>
           <td> <%= c.name %></td>
+          <td> <%= c.hunger.value %></td>
         </tr>
       <% end %>
     </tbody>
