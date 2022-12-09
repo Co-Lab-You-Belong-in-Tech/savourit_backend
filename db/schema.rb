@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_03_202308) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_09_111526) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "avoid_food_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "avoid_foods", force: :cascade do |t|
+    t.string "name"
+    t.bigint "avoid_food_category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["avoid_food_category_id"], name: "index_avoid_foods_on_avoid_food_category_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
@@ -91,6 +105,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_202308) do
     t.index ["restaurant_id"], name: "index_ubers_on_restaurant_id"
   end
 
+  add_foreign_key "avoid_foods", "avoid_food_categories"
   add_foreign_key "categories", "hungers"
   add_foreign_key "imagers", "restaurants"
   add_foreign_key "meals", "restaurants"

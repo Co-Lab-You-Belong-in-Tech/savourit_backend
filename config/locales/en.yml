@@ -46,3 +46,6 @@ en:
   avoid_food_category_created: 'Avoid food category was successfully created.'
   avoid_food_category_updated: 'Avoid food category was successfully updated.'
   avoid_food_category_destroyed: 'Avoid food category was successfully destroyed.'
+  avoid_food_created: 'Avoid food was successfully created.'
+  avoid_food_updated: 'Avoid food was successfully updated.'
+  avoid_food_destroyed: 'Avoid food was successfully destroyed.'

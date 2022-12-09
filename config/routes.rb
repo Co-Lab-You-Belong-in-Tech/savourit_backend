@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :avoid_foods
   resources :avoid_food_categories
   resources :hungers
   #resources :categories
