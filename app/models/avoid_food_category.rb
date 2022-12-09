@@ -1,0 +1,2 @@
+class AvoidFoodCategory < ApplicationRecord
+end

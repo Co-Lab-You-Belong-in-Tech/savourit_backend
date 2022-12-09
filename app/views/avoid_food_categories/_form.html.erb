@@ -1,0 +1,22 @@
+<%= form_with(model: avoid_food_category) do |form| %>
+  <% if avoid_food_category.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(avoid_food_category.errors.count, "error") %> prohibited this avoid_food_category from being saved:</h2>
+
+      <ul>
+        <% avoid_food_category.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
