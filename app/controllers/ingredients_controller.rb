@@ -64,6 +64,7 @@ class IngredientsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def ingredient_params
-    params.fetch(:ingredient, {})
+    # params.fetch(:ingredient, {name})
+    params.require(:ingredient).permit(:name)
   end
 end
