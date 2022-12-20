@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :allergens
   resources :category_ingredients
   resources :ingredients
   resources :avoid_foods
