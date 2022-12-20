@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @avoid_food %>
+
+<div>
+  <%= link_to "Edit this avoid food", edit_avoid_food_path(@avoid_food) %> |
+  <%= link_to "Back to avoid foods", avoid_foods_path %>
+
+  <%= button_to "Destroy this avoid food", @avoid_food, method: :delete %>
+</div>

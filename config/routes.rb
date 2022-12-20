@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :category_ingredients
+  resources :ingredients
+  resources :avoid_foods
+  resources :avoid_food_categories
   resources :hungers
   #resources :categories
   root "dashboard#index"

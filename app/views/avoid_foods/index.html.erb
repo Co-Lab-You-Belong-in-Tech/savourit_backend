@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Avoid foods</h1>
+
+<div id="avoid_foods">
+  <% @avoid_foods.each do |avoid_food| %>
+    <%= render avoid_food %>
+    <p>
+      <%= link_to "Show this avoid food", avoid_food %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New avoid food", new_avoid_food_path %>
