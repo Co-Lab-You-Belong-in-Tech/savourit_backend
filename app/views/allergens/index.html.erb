@@ -1,14 +1,13 @@
 <p style="color: green"><%= notice %></p>
-
 <h1>Allergens</h1>
-
 <div id="allergens">
   <% @allergens.each do |allergen| %>
-    <%= render allergen %>
     <p>
+      <strong>
+        <%= allergen.name %> </strong>
+      (  <%= allergen.ingredients.size %> )
       <%= link_to "Show this allergen", allergen %>
     </p>
   <% end %>
 </div>
-
 <%= link_to "New allergen", new_allergen_path %>

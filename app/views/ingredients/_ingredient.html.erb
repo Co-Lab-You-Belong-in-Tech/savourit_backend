@@ -1,4 +1,5 @@
 <span id="<%= dom_id ingredient %>">
   <%= ingredient.name %>
   (<%= ingredient.category_ingredient.name unless ingredient.category_ingredient.nil? %>)
+  (<%= ingredient.allergen.name unless ingredient.allergen.nil? %>)
 </span>
