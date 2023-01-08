@@ -8,6 +8,7 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
+        <th scope="col">Nb meals</th>
         <th scope="col">Nb Restaurant</th>
         <th scope="col">Restaurant</th>
         <th scope="col">Hunger</th>
@@ -18,6 +19,7 @@
         <tr id="<%= dom_id c %>">
           <th scope="row"><%= c.id %></th>
           <td> <%= c.name %></td>
+          <td> <%= c.meals.length %></td>
           <td><%= Restaurant.where(meals: c.meals).length %></td>
           <td>
             <% Restaurant.where(meals: c.meals).each do |m| %>
