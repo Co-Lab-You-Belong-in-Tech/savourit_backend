@@ -1,5 +1,9 @@
-<span id="<%= dom_id ingredient %>">
+<div id="<%= dom_id ingredient %>">
   <%= ingredient.name %>
-  (<%= ingredient.category_ingredient.name unless ingredient.category_ingredient.nil? %>)
-  (<%= ingredient.allergen.name unless ingredient.allergen.nil? %>)
-</span>
+  <p> category ingredient : <%= ingredient.category_ingredient.name unless ingredient.category_ingredient.nil? %> </p>
+  <p> allergen : <%= ingredient.allergen.name unless ingredient.allergen.nil? %> </p>
+  <%= ingredient.meals.size %>
+  <% ingredient.meals.each do |meal| %>
+    <p><% meal.title %> </p>
+  <% end %>
+</div>
