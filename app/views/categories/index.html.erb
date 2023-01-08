@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
 <%= link_to "Remove categories without meals", categories_remove_path, class: 'btn btn-outline-success mb-4' %>
 <%= link_to "Merge categories", categories_manage_path, class: 'btn btn-outline-success mb-4' %>
+<%= link_to "New category", new_category_path %>
 <div id="restaurants">
   <h1 class="mb-3">Categories</h1>
   <table class="table">
@@ -12,6 +13,7 @@
         <th scope="col">Nb Restaurant</th>
         <th scope="col">Restaurant</th>
         <th scope="col">Hunger</th>
+        <th scope="col">Show</th>
       </tr>
     </thead>
     <tbody>
@@ -27,6 +29,7 @@
             <% end %>
           </td>
           <td> <%= c.hunger.value %></td>
+          <td> <%= link_to "Show", c, class: "btn btn-warning" %> </td>
         </tr>
       <% end %>
     </tbody>
