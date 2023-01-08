@@ -26,6 +26,7 @@ class MealsController < ApplicationController
 
   # GET /meals/1/edit
   def edit
+    @meal = Meal.find(params[:id])
     @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
@@ -44,11 +45,23 @@ class MealsController < ApplicationController
     end
   end
 
+  def remove_category_from_meal
+    m = params['meal']
+    c = params['category']
+
+    meal = Meal.find(m)
+    meal.categories.delete(Category.find(c))
+
+    redirect_to edit_restaurant_meal_path(meal.restaurant, meal)
+  end
+
   # PATCH/PUT /meals/1 or /meals/1.json
   def update
+    c = params['meal']['cat_id']
+    @meal.categories.push(Category.find(c)) unless c.nil?
     respond_to do |format|
       if @meal.update(meal_params)
-        format.html { redirect_to meal_url(@meal), notice: t(:meal_updated) }
+        format.html { redirect_to restaurant_meal_path(@meal.restaurant, @meal), notice: t(:meal_updated) }
         format.json { render :show, status: :ok, location: @meal }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -76,6 +89,6 @@ class MealsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def meal_params
-    params.require(:meal).permit(:name, :price, :description, :photo, :rating, :user_ratings_total, :restaurant_id)
+    params.require(:meal).permit(:title, :price, :description, :image_url, :restaurant_id)
   end
 end

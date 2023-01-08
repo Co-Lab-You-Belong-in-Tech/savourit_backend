@@ -1,4 +1,6 @@
 <p style="color: green"><%= notice %></p>
+<%= link_to "Remove categories without meals", categories_remove_path, class: 'btn btn-outline-success mb-4' %>
+<%= link_to "Merge categories", categories_manage_path, class: 'btn btn-outline-success mb-4' %>
 <div id="restaurants">
   <h1 class="mb-3">Categories</h1>
   <table class="table">
