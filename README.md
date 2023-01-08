@@ -17,7 +17,7 @@
 
 ## Live Demo
 
-[SavourIt API](https://savourit.onrender.com/)
+[SavourIt Backend](https://savourit.onrender.com/)
 
 ## Getting Started
 
