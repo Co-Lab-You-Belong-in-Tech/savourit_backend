@@ -1,14 +1,42 @@
 <p style="color: green"><%= notice %></p>
-
-<h1>Categories</h1>
-
-<div id="categories">
-  <% @categories.each do |category| %>
-    <%= render category %>
-    <p>
-      <%= link_to "Show this category", category %>
-    </p>
-  <% end %>
+<%= link_to "Remove categories without meals", categories_remove_path, class: 'btn btn-outline-success mb-4' %>
+<%= link_to "Merge categories", categories_manage_path, class: 'btn btn-outline-success mb-4' %>
+<%= link_to "New category", new_category_path, class: 'btn btn-outline-success mb-4'
+ %>
+<div id="restaurants">
+  <h1 class="mb-3">Categories</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Nb meals</th>
+        <th scope="col">Nb Restaurant</th>
+        <th scope="col">Restaurant</th>
+        <th scope="col">Hunger</th>
+        <th scope="col">Show</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |c| %>
+        <tr id="<%= dom_id c %>">
+          <th scope="row"><%= c.id %></th>
+          <td> <%= c.name %></td>
+          <td> <%= c.meals.length %></td>
+          <td><%= Restaurant.where(meals: c.meals).length %></td>
+          <td>
+            <% Restaurant.where(meals: c.meals).each do |m| %>
+              <%= m.name %> <br/>
+            <% end %>
+          </td>
+          <td> <%= c.hunger.value %></td>
+          <td> <%= link_to "Show", c, class: "btn btn-warning" %> </td>
+          <td>  <%= link_to "Edit", edit_category_path(c), class: "btn btn-outline-info"%></td>
+          <td>  <%= button_to "Destroy", c, method: :delete, class: "btn btn-outline-danger"%> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-
-<%= link_to "New category", new_category_path %>

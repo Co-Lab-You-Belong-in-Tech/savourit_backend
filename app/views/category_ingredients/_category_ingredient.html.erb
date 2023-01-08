@@ -2,3 +2,10 @@
   <%= category_ingredient.name %>
   ( <%= category_ingredient.ingredients.size() %> ingredients )
 </div>
+<div>
+  <ul>
+    <% category_ingredient.ingredients.each do |i|%>
+      <li><%= i.name%></li>
+    <% end%>
+  </ul>
+</div>

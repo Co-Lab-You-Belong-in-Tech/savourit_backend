@@ -4,16 +4,10 @@ class DashboardController < ApplicationController
   def meals
     Rails.logger.debug params
 
-    budget = if params[:budget].nil?
-               100_000
+    @meals = if params[:budget].nil?
+               Meal.where(desactivate: false).order('RANDOM()')
              else
-               params[:budget]
+               Meal.where(desactivate: false).order(id: :asc)
              end
-
-    @meals = Meal.where('price <= :max ', max: budget).where(desactivate: false).order('RANDOM()')
-  end
-
-  def categories
-    @categories = Category.all
   end
 end
