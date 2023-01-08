@@ -1,7 +1,5 @@
 <p style="color: green"><%= notice %></p>
-
-<h1>Category ingredients</h1>
-
+<h1>Avoid meals <small>(Category ingredients)</small></h1>
 <div id="category_ingredients">
   <% @category_ingredients.each do |category_ingredient| %>
     <%= render category_ingredient %>
@@ -10,5 +8,4 @@
     </p>
   <% end %>
 </div>
-
 <%= link_to "New category ingredient", new_category_ingredient_path %>
