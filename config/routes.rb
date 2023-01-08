@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   resources :avoid_foods
   resources :avoid_food_categories
   resources :hungers
-  #resources :categories
+  resources :categories
+  
   root "dashboard#index"
   get '/meals', to: 'dashboard#meals'
-  get '/categories', to: 'dashboard#categories', as: 'categories'
   get '/categories_manage', to: 'dashboard#categories_manage', as: 'categories_manage'
   get '/categories_remove', to: 'dashboard#categories_remove', as: 'categories_remove'
   post '/merge_categories', to: 'dashboard#merge_categories', as: 'merge_categories'

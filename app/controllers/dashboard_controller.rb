@@ -11,10 +11,6 @@ class DashboardController < ApplicationController
              end
   end
 
-  def categories
-    @categories = Category.all
-  end
-
   def categories_manage
     @categories1 = Category.all.order(name: :asc)
     @categories2 = Category.all.order(name: :asc)
