@@ -35,7 +35,15 @@ class IngredientsController < ApplicationController
   # PATCH/PUT /ingredients/1 or /ingredients/1.json
   def update
     respond_to do |format|
+      categorie = @ingredient.category_ingredient
+
       if @ingredient.update(ingredient_params)
+
+        @ingredient.meals.each do |m|
+          m.category_ingredients.delete(categorie) unless categorie.nil?
+          m.category_ingredients.push(@ingredient.category_ingredient)
+        end
+
         format.html { redirect_to ingredient_url(@ingredient), notice: t(:ingredient_updated) }
         format.json { render :show, status: :ok, location: @ingredient }
       else
@@ -65,6 +73,6 @@ class IngredientsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def ingredient_params
     # params.fetch(:ingredient, {name})
-    params.require(:ingredient).permit(:name, :category_ingredient_id)
+    params.require(:ingredient).permit(:name, :category_ingredient_id, :allergen_id)
   end
 end

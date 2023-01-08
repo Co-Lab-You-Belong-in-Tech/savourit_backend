@@ -55,3 +55,6 @@ en:
   ingredient_created: 'Ingredient was successfully created.'
   ingredient_updated: 'Ingredient was successfully updated.'
   ingredient_destroyed: 'Ingredient was successfully destroyed.'
+  allergen_created: 'Allergen was successfully created.'
+  allergen_updated: 'Allergen was successfully updated.'
+  allergen_destroyed: 'Allergen was successfully destroyed.'

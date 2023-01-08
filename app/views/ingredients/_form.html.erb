@@ -18,6 +18,10 @@
     <%= form.collection_select :category_ingredient_id, CategoryIngredient.order(:name), :id, :name , {include_blank: 'no category'}%>
   </div>
   <div>
+    <%= form.label :allergen_id, style: "display: block" %>
+    <%= form.collection_select :allergen_id, Allergen.order(:name), :id, :name , {include_blank: 'no category'}%>
+  </div>
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

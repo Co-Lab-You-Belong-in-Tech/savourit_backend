@@ -22,11 +22,39 @@
       </tr>
       <tr>
         <th>Price:</th>
-        <td> <%= @meal.price/100 %></td>
+        <td> <%= @meal.price %></td>
       </tr>
       <tr>
         <th>Description:</th>
         <td> <%= @meal.description %></td>
+      </tr>
+      <tr>
+        <th>Uber categories:</th>
+        <td>
+          <%  @meal.categories.each do |category| %>
+            <%= category.name %> / 
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>Ingredient and Categories of ingredient: </th>
+        <td>
+          <%  @meal.ingredients.each do |ingredient| %>
+            <p>
+              <% if !ingredient.category_ingredient.nil? %>
+                <%= ingredient.name %>(<%= ingredient.category_ingredient.name %>)
+              <% end%>
+            </p>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>Allergens</th>
+        <td>
+          <%  @meal.ingredients.each do |ingredient| %>
+            <p><%= ingredient.allergen.name unless ingredient.allergen.nil? %> </p>
+          <% end %>
+        </td>
       </tr>
       <tr>
         <th>Photo:</th>

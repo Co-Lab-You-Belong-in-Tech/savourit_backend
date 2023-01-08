@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @allergen %>
+
+<div>
+  <%= link_to "Edit this allergen", edit_allergen_path(@allergen) %> |
+  <%= link_to "Back to allergens", allergens_path %>
+
+  <%= button_to "Destroy this allergen", @allergen, method: :delete %>
+</div>

@@ -1,0 +1,12 @@
+<div id="<%= dom_id allergen %>">
+  <p>
+    <strong>Allergen name:</strong>
+    <%= allergen.name %>
+  </p>
+  <p>
+    <strong>List of ingredient :</strong></p>
+  <% allergen.ingredients.each do |ingredient| %>
+    <p><%= ingredient.name %>  <%= link_to "Show this ingredient", ingredient %>
+    </p>
+  <% end %>
+</div>
