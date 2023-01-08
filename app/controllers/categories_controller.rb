@@ -62,7 +62,7 @@ class CategoriesController < ApplicationController
 
   def categories_remove
     Category.all.each do |c|
-      c.destroy if c.meals.length.zero?
+      c.destroy if c.meals.empty?
     end
     redirect_to categories_url
   end
